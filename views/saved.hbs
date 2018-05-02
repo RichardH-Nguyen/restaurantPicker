@@ -1,0 +1,7 @@
+<h1>{{title}}</h1>
+
+{{#each restaurants}}
+    <h2><a href="saved/{{this._id}}">{{this.name}}</a></h2>
+    <p>{{this.address}}</p>
+    <p>Rating: {{this.googleRating}}</p>
+{{/each}}
