@@ -1,6 +1,13 @@
 <h1>Search</h1>
 <p>Search a restaurant</p>
 
+<div id="flash-messages">
+    {{#if messages}}
+        <p class="error-message">{{messages.error}}</p>
+        <p class="info-message">{{messages.info}}</p>
+    {{/if}}
+</div>
+
 <form method="POST" action="/search">
     <input type="text" name="search" required>
     <button type="submit">Submit</button>

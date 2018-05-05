@@ -7,29 +7,62 @@ var restaurants = require('../models/restaurants');
 router.get('/', function(req, res, next) {
     restaurants.find()
         .then((docs) => {res.render('saved', {
-            title: 'saved restaurants',
+            title: 'Saved Restaurants',
             restaurants:docs})
     })
 });
 
-router.post('/add', function(req, res, next){
-    var r = new restaurants({name: req.body.name, address: req.body.address, googleRating: req.body.googleRating});
+router.post('/add', function(req, res, next) {
+    var r = new restaurants({name: req.body.name, address: req.body.address, googleRating: req.body.googleRating, userRating: 0});
 
-    r.save().then((newRestaurant) =>{console.log('created new restaurant.', newRestaurant)});
+        r.save().then((newRestaurant) => {
+            console.log('created new restaurant.', newRestaurant);
+            req.flash('info', 'Added restaurant');
+            res.render('index')})
+        .catch((err) => {if(err.name === 'ValidationError'){
+            console.log(err.message);
+            req.flash('error', r.name + ' has already been added to saved restaurants.');
+            res.redirect('/')
+        }
+        else {
+            console.log(err.name);
+            next(err);
+        }
+        });
 
-    res.render('index');
 });
 
 router.get('/:_id', function(req, res, next){
     restaurants.findById(req.params._id)
         .then((doc) => {
         if(!doc){
-            res.status(404).send('Task not found')
+            res.status(404).send('Restaurant not found')
         }
         else {
-            res.render('restaurant', {restaurant: doc})
-        }
+                res.render('restaurant', {restaurant: doc})
+            }
         })
+});
+
+router.post('/update', function (req, res, next) {
+   restaurants.update({_id: req.body._id}, {userRating: req.body.userRating}, {runValidators: true})
+       .then((updatedDoc) => {
+           if(updatedDoc){
+               req.flash('info', `${req.body.name} has been updated`);
+               res.redirect(`/saved/${req.body._id}`);
+           }
+        })
+       .catch((err) => {if(err.name === 'ValidationError') {
+           console.log(err.message);
+           req.flash('error', err.message);
+           res.redirect(`/saved/${req.body._id}`)
+       }
+       else {
+           console.log(err.name);
+           next(err);
+       }
+       });
+
 });
 
 module.exports = router;

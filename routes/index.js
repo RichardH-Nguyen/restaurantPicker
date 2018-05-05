@@ -18,7 +18,9 @@ router.post('/search', function(req, res, next) {
         else{
             var restaurants = [];
             for(var i = 0 ; i < googledata.results.length ; i++){
-                restaurants.push(googledata.results[i]);
+                if(googledata.results[i].types.includes('restaurant')) {
+                    restaurants.push(googledata.results[i]);
+                }
             }
 
             res.render('index', {restaurants: restaurants

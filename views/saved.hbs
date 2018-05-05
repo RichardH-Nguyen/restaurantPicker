@@ -3,5 +3,8 @@
 {{#each restaurants}}
     <h2><a href="saved/{{this._id}}">{{this.name}}</a></h2>
     <p>{{this.address}}</p>
-    <p>Rating: {{this.googleRating}}</p>
+    <p>Google Rating: {{this.googleRating}}</p>
+    {{#if this.userRating}}
+        <p>Personal Rating: {{this.userRating}}</p>
+    {{/if}}
 {{/each}}

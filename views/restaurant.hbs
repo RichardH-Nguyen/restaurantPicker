@@ -1,2 +1,27 @@
 {{title}}
-{{restaurant.name}}
+<h1>{{restaurant.name}}</h1>
+
+<div id="flash-messages">
+    {{#if messages}}
+        <p class="error-message">{{messages.error}}</p>
+        <p class="info-message">{{messages.info}}</p>
+    {{/if}}
+</div>
+
+<p>Address: {{restaurant.address}}</p>
+<p>Google Rating: {{restaurant.googleRating}}</p>
+{{#if restaurant.userRating}}
+    <form action="/saved/update" method="POST">
+        <p>Personal Rating: <input type="number" name='userRating' value="{{restaurant.userRating}}"></p>
+        <input type="hidden" name="_id" value="{{restaurant._id}}">
+        <input type="hidden" name="name" value="{{restaurant.name}}">
+        <button type="submit">Update Personal Rating</button>
+    </form>
+{{else}}
+    <form action="/saved/update" method="POST">
+    <p>Personal Rating: <input type="number" name="userRating"></p>
+        <input type="hidden" name="_id" value="{{restaurant._id}}">
+        <input type="hidden" name="name" value="{{restaurant.name}}">
+    <button type="submit">Add Personal Rating</button>
+    </form>
+{{/if}}
