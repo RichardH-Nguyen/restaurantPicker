@@ -39,7 +39,7 @@ router.get('/:_id', function(req, res, next){
             res.status(404).send('Restaurant not found')
         }
         else {
-                res.render('restaurant', {restaurant: doc})
+                res.render('restaurant', {title: 'Restaurant Info', restaurant: doc})
             }
         })
 });

@@ -5,7 +5,7 @@ var googlePlaces = require('../services/googlePlaces');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('index', {title: 'Search'});
 });
 
 router.post('/search', function(req, res, next) {

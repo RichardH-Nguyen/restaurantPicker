@@ -1,5 +1,7 @@
-<h1>{{title}}</h1>
-
+<br>
+<form method="POST" action="/saved/random">
+    <button type="submit">Random Restaurant</button>
+</form>
 {{#each restaurants}}
     <h2><a href="saved/{{this._id}}">{{this.name}}</a></h2>
     <p>{{this.address}}</p>

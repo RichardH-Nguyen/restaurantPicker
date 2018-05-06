@@ -3,11 +3,17 @@
   <head>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
   <body>
-  <a href="/">home</a>
-  <a href="/saved">Saved Restaurants</a>
-  <hr>
+  <div id="title"><h1>{{title}}</h1></div>
+  <div id="tablink" class="tablink">
+      <a id="home"  onclick="toggleActive(this.id)" href="/">Home</a>
+      <a id="saved" onclick="toggleActive(this.id)" href="/saved">Saved Restaurants</a>
+  </div>
+<br>
+<br>
     {{{body}}}
+  <script src="/javascripts/navFunctions.js"></script>
   </body>
 </html>

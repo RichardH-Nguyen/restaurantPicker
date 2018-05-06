@@ -6,3 +6,45 @@ body {
 a {
   color: #00B7FF;
 }
+
+.tablink {
+
+  position: absolute;
+
+  left: 40%;
+  width: 50%;
+}
+
+.tablink a{
+  background-color: black;
+  color: white;
+  float: left;
+  border:1px solid red;
+  outline: white;
+  cursor: pointer;
+  padding: 10px 12px;
+  font-size: 17px;
+
+  text-align: center;
+
+}
+
+.tablink a:hover{
+  animation: colorChange 1s;
+  animation-fill-mode: forwards;
+  color: black;
+}
+
+@keyframes colorChange {
+  to{background-color: white}
+}
+
+a.active{
+  background-color: blue;
+
+}
+
+#title{
+  text-align: center;
+  font-size: 25px;
+}
