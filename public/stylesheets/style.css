@@ -39,7 +39,7 @@ a {
   to{background-color: white}
 }
 
-a.active{
+.tablink a.active{
   background-color: blue;
 
 }
