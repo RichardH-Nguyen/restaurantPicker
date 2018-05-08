@@ -3,9 +3,15 @@ var router = express.Router();
 
 var googlePlaces = require('../services/googlePlaces');
 
+function toggleActive(id){
+    var element = document.getElementById(id);
+    element.classList.toggle("active");
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', {title: 'Search'});
+
 });
 
 router.post('/search', function(req, res, next) {
@@ -23,10 +29,14 @@ router.post('/search', function(req, res, next) {
                 }
             }
 
-            res.render('index', {restaurants: restaurants
+            res.render('index', {title: 'Search', restaurants: restaurants
             });
         }
 }, query);
+});
+
+router.get('/about', function (req, res, next) {
+   res.render('about', {title: 'About'})
 });
 
 module.exports = router;

@@ -4,14 +4,14 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: blue;
 }
 
 .tablink {
-
+  height: auto;
+  margin: auto;
   position: absolute;
-
-  left: 40%;
+  left: 35%;
   width: 50%;
 }
 
@@ -24,7 +24,6 @@ a {
   cursor: pointer;
   padding: 10px 12px;
   font-size: 17px;
-
   text-align: center;
 
 }
@@ -39,7 +38,7 @@ a {
   to{background-color: white}
 }
 
-.tablink a.active{
+.tablink a:active{
   background-color: blue;
 
 }
@@ -47,4 +46,19 @@ a {
 #title{
   text-align: center;
   font-size: 25px;
+}
+
+body{
+  background-color: slategray;
+}
+
+button{
+  background-color: black;
+  color: white;
+  border:1px solid red;
+}
+
+button:hover{
+  background-color: white;
+  color: black;
 }

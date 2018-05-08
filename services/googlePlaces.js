@@ -6,7 +6,7 @@ var apiKey = process.env.GOOGLE_PLACES_API_KEY;
 function googlePlacesRequest(callback, query){
     process.nextTick(function(){
 
-        queryParam = {query: query, key: apiKey};
+        queryParam = {query: query , key: apiKey};
 
         request({uri: baseURL, qs: queryParam}, function(error, google_response, body){
 

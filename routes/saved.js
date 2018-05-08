@@ -65,4 +65,15 @@ router.post('/update', function (req, res, next) {
 
 });
 
+router.post('/random', function (req, res, next) {
+   restaurants.find()
+       .then((docs) => {
+           var i = Math.floor(Math.random() * docs.length);
+           var id = docs[i]._id;
+           res.redirect(`/saved/${id}`)
+
+       });
+
+});
+
 module.exports = router;

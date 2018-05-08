@@ -6,14 +6,15 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </head>
   <body>
-  <script src="/javascripts/navFunctions.js"></script>
+
   <div id="title"><h1>{{title}}</h1></div>
   <div id="tablink" class="tablink">
-      <a id="home" class="nav" onclick="toggleActive(this.id)" href="/">Home</a>
-      <a id="saved" class="nav" onclick="toggleActive(this.id)" href="/saved">Saved Restaurants</a>
+      <a id="home" class="nav"  href="/">Home</a>
+      <a id="saved" class="nav" href="/saved">Saved Restaurants</a>
+      <a id="saved" class="nav" href="/about">About</a>
   </div>
 <br>
-<br>
+  <hr>
     {{{body}}}
   </body>
 </html>
