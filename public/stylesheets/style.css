@@ -62,3 +62,28 @@ button:hover{
   background-color: white;
   color: black;
 }
+
+.info-message{
+  color: white;
+  animation: blinkGreen ;
+  animation-duration: 200ms;
+  animation-iteration-count: 3;
+
+}
+
+.error-message{
+  color: darkred;
+  animation: blinkRed ;
+  animation-duration: 200ms;
+  animation-iteration-count: 3;
+
+
+}
+
+@keyframes blinkRed {
+  to {color: red}
+}
+@keyframes blinkGreen {
+  to{color: green}
+
+}
