@@ -10,6 +10,7 @@
 
 <p>Address: {{restaurant.address}}</p>
 <p>Google Rating: {{restaurant.googleRating}}</p>
+<p>Price Level: {{this.priceLevel}}</p>
 {{#if restaurant.userRating}}
     <form action="/saved/update" method="POST">
         <p>Personal Rating: <input type="number" name='userRating' value="{{restaurant.userRating}}"></p>
