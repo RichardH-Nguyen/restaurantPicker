@@ -1,13 +1,32 @@
 <br>
+<div id="flash-messages">
+    {{#if messages}}
+        <p class="error-message">{{messages.error}}</p>
+        <p class="info-message">{{messages.info}}</p>
+    {{/if}}
+</div>
+{{#if restaurants}}
 <form method="POST" action="/saved/random">
     <button type="submit">Random Restaurant</button>
 </form>
 {{#each restaurants}}
     <h2><a href="saved/{{this._id}}">{{this.name}}</a></h2>
     <p>{{this.address}}</p>
+    <p>Price Level: {{this.priceLevel}}</p>
     <p>Google Rating: {{this.googleRating}}</p>
     {{#if this.userRating}}
         <p>Personal Rating: {{this.userRating}}</p>
     {{/if}}
+    <form class="delete-form" action="/saved/delete" method="POST">
+        <input type="hidden" name="_id" value="{{this._id}}">
+        <input type="hidden" name="name" value="{{this.name}}">
+        <button type="submit" class="delete-button" name="{{this.name}}">Delete</button>
+    </form>
     <hr>
 {{/each}}
+
+{{else}}
+    <h2>No saved restaurants</h2>
+{{/if}}
+
+<script src="/javascripts/confirm-delete.js"></script>

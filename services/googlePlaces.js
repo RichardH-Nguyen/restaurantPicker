@@ -6,7 +6,7 @@ var apiKey = process.env.GOOGLE_PLACES_API_KEY;
 function googlePlacesRequest(callback, query){
     process.nextTick(function(){
 
-        queryParam = {query: query , key: apiKey};
+        queryParam = {query: query ,type: 'restaurant', location: '44.9778,-93.2650', radius: '16093.4', key: apiKey};
 
         request({uri: baseURL, qs: queryParam}, function(error, google_response, body){
 

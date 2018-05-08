@@ -8,18 +8,22 @@
     {{/if}}
 </div>
 
+<!-- search box -->
 <form method="POST" action="/search">
     <input type="text" name="search" required>
     <button type="submit">Submit</button>
 </form>
 
+
 {{#each restaurants}}
     <h2>{{this.name}}</h2>
     <p>{{this.formatted_address}}</p>
+    <p>Price Level: {{this.price_level}}</p>
     <p>Rating: {{this.rating}}</p>
     <form  action="/saved/add" method="POST">
         <input type="hidden" name="name" value="{{this.name}}">
         <input type="hidden" name="address" value="{{this.formatted_address}}">
+        <input type="hidden" name="priceLevel" value="{{this.price_level}}">
         <input type="hidden" name="googleRating" value="{{this.rating}}">
         <button type="submit">Save</button>
     </form>
